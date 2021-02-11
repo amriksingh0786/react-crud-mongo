@@ -17,6 +17,9 @@ let Business = new Schema({
   },
   date_of_birth:{
     type: Date
+  },
+  marital_status:{
+    type: String
   }
 },{
     collection: 'business'

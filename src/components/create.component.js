@@ -10,6 +10,8 @@ export default class Create extends Component {
     this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
     this.onChangeQualification = this.onChangeQualification.bind(this);
     this.onChangeDOB = this.onChangeDOB.bind(this);
+    this.onChangeMaritalStatus = this.onChangeMaritalStatus.bind(this);
+    this.onChangeHobby = this.onChangeHobby.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -17,7 +19,9 @@ export default class Create extends Component {
       last_name: '',
       business_gst_number:'',
       person_qualification:'',
-      date_of_birth:''
+      date_of_birth:'',
+      marital_status:'',
+      person_hobby:''
     }
   }
   onChangePersonName(e) {
@@ -45,6 +49,16 @@ export default class Create extends Component {
         date_of_birth: e.target.value
       })
   }
+  onChangeMaritalStatus(e){
+    this.setState({
+      marital_status: e.target.value
+    })
+  }
+    onChangeHobby(e){
+      this.setState({
+        person_hobby: e.target.value
+      })
+}
 
   onSubmit(e) {
     e.preventDefault();
@@ -53,7 +67,9 @@ export default class Create extends Component {
       last_name: this.state.last_name,
       business_gst_number: this.state.business_gst_number,
       person_qualification: this.state.person_qualification,
-      date_of_birth: this.state.date_of_birth
+      date_of_birth: this.state.date_of_birth,
+      marital_status: this.state.marital_status,
+      person_hobby: this.state.person_hobby
     };
     axios.post('http://localhost:4000/business/add', obj)
         .then(res => console.log(res.data));
@@ -63,7 +79,9 @@ export default class Create extends Component {
       last_name: '',
       business_gst_number: '',
       person_qualification: '',
-      date_of_birth: ''
+      date_of_birth: '',
+      marital_status:'',
+      person_hobby:''
     })
   }
  
@@ -118,6 +136,27 @@ export default class Create extends Component {
                       onChange={this.onChangeDOB}
                       />
                 </div>
+                <div className="form-group">
+                    <label>Marital Status : </label>
+                      <input list="browsers" name="browser" className="form-control"
+                      value={this.state.marital_status}
+                      onChange={this.onChangeMaritalStatus}/>
+                      <datalist id="browsers">
+                        <option value="Internet Explorer"/>
+                        <option value="Firefox"/>
+                        <option value="Chrome"/>
+                        <option value="Opera"/>
+                        <option value="Safari"/>
+                      </datalist>
+                </div>
+               {/*  <div className="form-group">
+                    <label>Hobby : </label>
+                    <input type="checkbox" 
+                      className="form-control"
+                      value={this.state.person_hobby}
+                      onChange={this.onChangeHobby}
+                      />
+                </div> */}
                 <div className="form-group">
                     <input type="submit" 
                       value="Register Person" 
