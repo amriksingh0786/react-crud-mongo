@@ -9,9 +9,7 @@ let Business = new Schema({
   last_name: {
     type: String
   },
- /*  business_gst_number: {
-    type: Number
-  }, */
+
   person_qualification:{
     type: String
   },
@@ -19,6 +17,9 @@ let Business = new Schema({
     type: Date
   },
   marital_status:{
+    type: String
+  },
+  person_hobby:{
     type: String
   }
 },{

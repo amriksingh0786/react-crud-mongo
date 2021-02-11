@@ -22,9 +22,6 @@ class TableRow extends Component {
           <td>
             {this.props.obj.last_name}
           </td>
-          {/* <td>
-            {this.props.obj.business_gst_number}
-          </td> */}
           <td>
             {this.props.obj.person_qualification}
           </td>
@@ -33,6 +30,9 @@ class TableRow extends Component {
           </td>
           <td>
             {this.props.obj.marital_status}
+          </td>
+          <td>
+            {this.props.obj.person_hobby}
           </td>
           <td>
             <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>

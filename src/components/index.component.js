@@ -32,10 +32,10 @@ export default class Index extends Component {
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-               {/*  <th>GST Number</th> */}
                 <th>Qualification</th>
                 <th>DOB</th>
                 <th>Marital Status</th>
+                <th>Person Hobby</th>
                 <th colSpan="2">Action</th>
               </tr>
             </thead>

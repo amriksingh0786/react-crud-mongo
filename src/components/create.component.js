@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Dropdown } from 'react-bootstrap';
 
 export default class Create extends Component {
   constructor(props) {
     super(props);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeLastName = this.onChangeLastName.bind(this);
-  /*   this.onChangeGstNumber = this.onChangeGstNumber.bind(this); */
     this.onChangeQualification = this.onChangeQualification.bind(this);
     this.onChangeDOB = this.onChangeDOB.bind(this);
     this.onChangeMaritalStatus = this.onChangeMaritalStatus.bind(this);
@@ -17,7 +15,6 @@ export default class Create extends Component {
     this.state = {
       first_name: '',
       last_name: '',
-    /*   business_gst_number:'', */
       person_qualification:'',
       date_of_birth:'',
       marital_status:'',
@@ -34,11 +31,7 @@ export default class Create extends Component {
       last_name: e.target.value
     })  
   }
- /*  onChangeGstNumber(e) {
-    this.setState({
-      business_gst_number: e.target.value
-    })
-  } */
+
   onChangeQualification(e) {
     this.setState({
       person_qualification: e.target.value
@@ -65,7 +58,6 @@ export default class Create extends Component {
     const obj = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-    /*   business_gst_number: this.state.business_gst_number, */
       person_qualification: this.state.person_qualification,
       date_of_birth: this.state.date_of_birth,
       marital_status: this.state.marital_status,
@@ -77,7 +69,6 @@ export default class Create extends Component {
     this.setState({
       first_name: '',
       last_name: '',
-  /*     business_gst_number: '', */
       person_qualification: '',
       date_of_birth: '',
       marital_status:'',
@@ -107,14 +98,6 @@ export default class Create extends Component {
                       onChange={this.onChangeLastName}
                       />
                 </div>
-                {/* <div className="form-group">
-                    <label>GST Number: </label>
-                    <input type="text" 
-                      className="form-control"
-                      value={this.state.business_gst_number}
-                      onChange={this.onChangeGstNumber}
-                      />
-                </div> */}
                 <div className="form-group">
                     <label>Qualification: </label>
                       <input list="browsers" name="browser" className="form-control"
@@ -149,14 +132,20 @@ export default class Create extends Component {
                         <option value="Safari"/>
                       </datalist>
                 </div>
-               {/*  <div className="form-group">
+                <div className="form-group">
                     <label>Hobby : </label>
-                    <input type="checkbox" 
+                    <input name = "hobby" type="checkbox" 
                       className="form-control"
                       value={this.state.person_hobby}
                       onChange={this.onChangeHobby}
                       />
-                </div> */}
+                      <input name = "hobby" type="checkbox" 
+                      className="form-control"
+                      value={this.state.person_hobby}
+                      onChange={this.onChangeHobby}
+                      />
+
+                </div>
                 <div className="form-group">
                     <input type="submit" 
                       value="Register Person" 
