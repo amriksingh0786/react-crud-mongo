@@ -23,7 +23,7 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-      axios.get('http://localhost:4000/business/edit/'+this.props.match.params.id)
+      axios.get('http://localhost:4000/person/edit/'+this.props.match.params.id)
           .then(response => {
               this.setState({ 
                 first_name: response.data.first_name,
@@ -80,7 +80,7 @@ export default class Edit extends Component {
       marital_status: this.state.marital_status,
       person_hobby: this.state.person_hobby
     };
-    axios.post('http://localhost:4000/business/update/'+this.props.match.params.id, obj)
+    axios.post('http://localhost:4000/person/update/'+this.props.match.params.id, obj)
         .then(res => console.log(res.data));
     
     this.props.history.push('/index');
@@ -111,15 +111,15 @@ export default class Edit extends Component {
              
                 <div className="form-group">
                     <label>Qualification: </label>
-                      <input list="browsers" name="browser" className="form-control"
+                      <input list="Qualification" name="Qualification" className="form-control"
                       value={this.state.person_qualification}
                       onChange={this.onChangeQualification}/>
-                      <datalist id="browsers">
-                        <option value="Internet Explorer"/>
-                        <option value="Firefox"/>
-                        <option value="Chrome"/>
-                        <option value="Opera"/>
-                        <option value="Safari"/>
+                      <datalist id="Qualification">
+                        <option value="Btech"/>
+                        <option value="Mtech"/>
+                        <option value="BSc"/>
+                        <option value="MBA"/>
+                        <option value="BBA"/>
                       </datalist>
                 </div>
                 <div className="form-group">
@@ -132,15 +132,15 @@ export default class Edit extends Component {
                 </div>
                 <div className="form-group">
                     <label>Marital Status : </label>
-                      <input list="browsers" name="browser" className="form-control"
+                      <input list="MariStatus" name="MariStatus" className="form-control"
                       value={this.state.marital_status}
                       onChange={this.onChangeMaritalStatus}/>
-                      <datalist id="browsers">
-                        <option value="Internet Explorer"/>
-                        <option value="Firefox"/>
-                        <option value="Chrome"/>
-                        <option value="Opera"/>
-                        <option value="Safari"/>
+                      <datalist id="MariStatus">
+                        <option value="Married"/>
+                        <option value="Single"/>
+                        <option value="Divorced"/>
+                        <option value="Widow Female"/>
+                        <option value="Widow Male"/>
                       </datalist>
                 </div>
                 <div className="form-group">
@@ -155,7 +155,6 @@ export default class Edit extends Component {
                       value={this.state.person_hobby}
                       onChange={this.onChangeHobby}
                       />Chess
-
                 </div>
                 <div className="form-group">
                     <input type="submit" 

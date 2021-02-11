@@ -63,7 +63,7 @@ export default class Create extends Component {
       marital_status: this.state.marital_status,
       person_hobby: this.state.person_hobby
     };
-    axios.post('http://localhost:4000/business/add', obj)
+    axios.post('http://localhost:4000/person/add', obj)
         .then(res => console.log(res.data));
     
     this.setState({
@@ -79,7 +79,7 @@ export default class Create extends Component {
   render() {
     return (
         <div style={{ marginTop: 10 }}>
-            <h3 align="center">Add New Business</h3>
+            <h3 align="center">Add New Person</h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>First Name:  </label>
@@ -100,15 +100,15 @@ export default class Create extends Component {
                 </div>
                 <div className="form-group">
                     <label>Qualification: </label>
-                      <input list="browsers" name="browser" className="form-control"
+                      <input list="Qualification" name="Qualification" className="form-control"
                       value={this.state.person_qualification}
                       onChange={this.onChangeQualification}/>
-                      <datalist id="browsers">
-                        <option value="Internet Explorer"/>
-                        <option value="Firefox"/>
-                        <option value="Chrome"/>
-                        <option value="Opera"/>
-                        <option value="Safari"/>
+                      <datalist id="Qualification">
+                        <option value="Btech"/>
+                        <option value="Mtech"/>
+                        <option value="BSc"/>
+                        <option value="MBA"/>
+                        <option value="BBA"/>
                       </datalist>
                 </div>
                 <div className="form-group">
@@ -121,15 +121,15 @@ export default class Create extends Component {
                 </div>
                 <div className="form-group">
                     <label>Marital Status : </label>
-                      <input list="browsers" name="browser" className="form-control"
+                      <input list="MariStatus" name="MariStatus" className="form-control"
                       value={this.state.marital_status}
                       onChange={this.onChangeMaritalStatus}/>
-                      <datalist id="browsers">
-                        <option value="Internet Explorer"/>
-                        <option value="Firefox"/>
-                        <option value="Chrome"/>
-                        <option value="Opera"/>
-                        <option value="Safari"/>
+                      <datalist id="MariStatus">
+                        <option value="Married"/>
+                        <option value="Single"/>
+                        <option value="Divorced"/>
+                        <option value="Widow Female"/>
+                        <option value="Widow Male"/>
                       </datalist>
                 </div>
                 <div className="form-group">

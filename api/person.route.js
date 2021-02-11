@@ -1,17 +1,17 @@
-// business.route.js
+// person.route.js
 
 const express = require('express');
 const businessRoutes = express.Router();
 
 // Require Business model in our routes module
-let Business = require('./business.model');
+let Business = require('./person.model');
 
 // Defined store route
 businessRoutes.route('/add').post(function (req, res) {
-  let business = new Business(req.body);
-  business.save()
-    .then(business => {
-      res.status(200).json({'business': 'business in added successfully'});
+  let person = new Business(req.body);
+  person.save()
+    .then(person => {
+      res.status(200).json({'person': 'person in added successfully'});
     })
     .catch(err => {
       res.status(400).send("unable to save to database");
@@ -33,25 +33,25 @@ businessRoutes.route('/').get(function (req, res) {
 // Defined edit route
 businessRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  Business.findById(id, function (err, business){
-      res.json(business);
+  Business.findById(id, function (err, person){
+      res.json(person);
   });
 });
 
 //  Defined update route
 businessRoutes.route('/update/:id').post(function (req, res) {
-    Business.findById(req.params.id, function(err, business) {
-    if (!business)
+    Business.findById(req.params.id, function(err, person) {
+    if (!person)
       res.status(404).send("data is not found");
     else {
-        business.first_name = req.body.first_name;
-        business.last_name = req.body.last_name;
-        business.person_qualification= req.body.person_qualification;
-        business.date_of_birth= req.body.date_of_birth;
-        business.marital_status= req.body.marital_status;
-        business.person_hobby = req.body.person_hobby;
+        person.first_name = req.body.first_name;
+        person.last_name = req.body.last_name;
+        person.person_qualification= req.body.person_qualification;
+        person.date_of_birth= req.body.date_of_birth;
+        person.marital_status= req.body.marital_status;
+        person.person_hobby = req.body.person_hobby;
 
-        business.save().then(business => {
+        person.save().then(person => {
           res.json('Update complete');
         })
         .catch(err => {
@@ -63,7 +63,7 @@ businessRoutes.route('/update/:id').post(function (req, res) {
 
 // Defined delete | remove | destroy route
 businessRoutes.route('/delete/:id').get(function (req, res) {
-    Business.findByIdAndRemove({_id: req.params.id}, function(err, business){
+    Business.findByIdAndRemove({_id: req.params.id}, function(err, person){
         if(err) res.json(err);
         else res.json('Successfully removed');
     });

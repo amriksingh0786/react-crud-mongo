@@ -23,7 +23,7 @@ let Business = new Schema({
     type: String
   }
 },{
-    collection: 'business'
+    collection: 'person'
 });
 
 module.exports = mongoose.model('Business', Business);
