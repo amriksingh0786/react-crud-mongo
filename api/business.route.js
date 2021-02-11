@@ -48,6 +48,7 @@ businessRoutes.route('/update/:id').post(function (req, res) {
         business.last_name = req.body.last_name;
         business.business_gst_number = req.body.business_gst_number;
         business.person_qualification= req.body.person_qualification;
+        business.date_of_birth= req.body.date_of_birth;
 
         business.save().then(business => {
           res.json('Update complete');

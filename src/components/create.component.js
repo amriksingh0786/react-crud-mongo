@@ -9,13 +9,15 @@ export default class Create extends Component {
     this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
     this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
     this.onChangeQualification = this.onChangeQualification.bind(this);
+    this.onChangeDOB = this.onChangeDOB.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       first_name: '',
       last_name: '',
       business_gst_number:'',
-      person_qualification:''
+      person_qualification:'',
+      date_of_birth:''
     }
   }
   onChangePersonName(e) {
@@ -38,6 +40,11 @@ export default class Create extends Component {
       person_qualification: e.target.value
     })
   }
+  onChangeDOB(e){
+      this.setState({
+        date_of_birth: e.target.value
+      })
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -45,7 +52,8 @@ export default class Create extends Component {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       business_gst_number: this.state.business_gst_number,
-      person_qualification: this.state.person_qualification
+      person_qualification: this.state.person_qualification,
+      date_of_birth: this.state.date_of_birth
     };
     axios.post('http://localhost:4000/business/add', obj)
         .then(res => console.log(res.data));
@@ -54,7 +62,8 @@ export default class Create extends Component {
       first_name: '',
       last_name: '',
       business_gst_number: '',
-      person_qualification: ''
+      person_qualification: '',
+      date_of_birth: ''
     })
   }
  
@@ -100,6 +109,14 @@ export default class Create extends Component {
                         <option value="Opera"/>
                         <option value="Safari"/>
                       </datalist>
+                </div>
+                <div className="form-group">
+                    <label>Date Of Birth: </label>
+                    <input type="date" 
+                      className="form-control"
+                      value={this.state.date_of_birth}
+                      onChange={this.onChangeDOB}
+                      />
                 </div>
                 <div className="form-group">
                     <input type="submit" 
