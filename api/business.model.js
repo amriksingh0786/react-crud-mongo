@@ -11,6 +11,9 @@ let Business = new Schema({
   },
   business_gst_number: {
     type: Number
+  },
+  person_qualification:{
+    type: String
   }
 },{
     collection: 'business'

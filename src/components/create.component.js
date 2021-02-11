@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Dropdown} from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 export default class Create extends Component {
   constructor(props) {
@@ -8,12 +8,14 @@ export default class Create extends Component {
     this.onChangePersonName = this.onChangePersonName.bind(this);
     this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
     this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
+    this.onChangeQualification = this.onChangeQualification.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       first_name: '',
       last_name: '',
-      business_gst_number:''
+      business_gst_number:'',
+      person_qualification:''
     }
   }
   onChangePersonName(e) {
@@ -31,13 +33,19 @@ export default class Create extends Component {
       business_gst_number: e.target.value
     })
   }
+  onChangeQualification(e) {
+    this.setState({
+      person_qualification: e.target.value
+    })
+  }
 
   onSubmit(e) {
     e.preventDefault();
     const obj = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      business_gst_number: this.state.business_gst_number
+      business_gst_number: this.state.business_gst_number,
+      person_qualification: this.state.person_qualification
     };
     axios.post('http://localhost:4000/business/add', obj)
         .then(res => console.log(res.data));
@@ -45,7 +53,8 @@ export default class Create extends Component {
     this.setState({
       first_name: '',
       last_name: '',
-      business_gst_number: ''
+      business_gst_number: '',
+      person_qualification: ''
     })
   }
  
@@ -79,18 +88,18 @@ export default class Create extends Component {
                       onChange={this.onChangeGstNumber}
                       />
                 </div>
-                <div>
-                <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Dropdown Button
-                </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
-              </Dropdown>
+                <div className="form-group">
+                    <label>Qualification: </label>
+                      <input list="browsers" name="browser" className="form-control"
+                      value={this.state.person_qualification}
+                      onChange={this.onChangeQualification}/>
+                      <datalist id="browsers">
+                        <option value="Internet Explorer"/>
+                        <option value="Firefox"/>
+                        <option value="Chrome"/>
+                        <option value="Opera"/>
+                        <option value="Safari"/>
+                      </datalist>
                 </div>
                 <div className="form-group">
                     <input type="submit" 

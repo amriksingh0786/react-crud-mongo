@@ -26,6 +26,9 @@ class TableRow extends Component {
             {this.props.obj.business_gst_number}
           </td>
           <td>
+            {this.props.obj.person_qualification}
+          </td>
+          <td>
             <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>
           </td>
           <td>
