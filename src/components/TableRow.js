@@ -22,9 +22,9 @@ class TableRow extends Component {
           <td>
             {this.props.obj.last_name}
           </td>
-          <td>
+          {/* <td>
             {this.props.obj.business_gst_number}
-          </td>
+          </td> */}
           <td>
             {this.props.obj.person_qualification}
           </td>

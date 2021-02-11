@@ -5,9 +5,9 @@ import { Dropdown } from 'react-bootstrap';
 export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.onChangePersonName = this.onChangePersonName.bind(this);
-    this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
-    this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
+    this.onChangeFirstName = this.onChangeFirstName.bind(this);
+    this.onChangeLastName = this.onChangeLastName.bind(this);
+  /*   this.onChangeGstNumber = this.onChangeGstNumber.bind(this); */
     this.onChangeQualification = this.onChangeQualification.bind(this);
     this.onChangeDOB = this.onChangeDOB.bind(this);
     this.onChangeMaritalStatus = this.onChangeMaritalStatus.bind(this);
@@ -17,28 +17,28 @@ export default class Create extends Component {
     this.state = {
       first_name: '',
       last_name: '',
-      business_gst_number:'',
+    /*   business_gst_number:'', */
       person_qualification:'',
       date_of_birth:'',
       marital_status:'',
       person_hobby:''
     }
   }
-  onChangePersonName(e) {
+  onChangeFirstName(e) {
     this.setState({
       first_name: e.target.value
     });
   }
-  onChangeBusinessName(e) {
+  onChangeLastName(e) {
     this.setState({
       last_name: e.target.value
     })  
   }
-  onChangeGstNumber(e) {
+ /*  onChangeGstNumber(e) {
     this.setState({
       business_gst_number: e.target.value
     })
-  }
+  } */
   onChangeQualification(e) {
     this.setState({
       person_qualification: e.target.value
@@ -65,7 +65,7 @@ export default class Create extends Component {
     const obj = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      business_gst_number: this.state.business_gst_number,
+    /*   business_gst_number: this.state.business_gst_number, */
       person_qualification: this.state.person_qualification,
       date_of_birth: this.state.date_of_birth,
       marital_status: this.state.marital_status,
@@ -77,7 +77,7 @@ export default class Create extends Component {
     this.setState({
       first_name: '',
       last_name: '',
-      business_gst_number: '',
+  /*     business_gst_number: '', */
       person_qualification: '',
       date_of_birth: '',
       marital_status:'',
@@ -96,7 +96,7 @@ export default class Create extends Component {
                       type="text" 
                       className="form-control" 
                       value={this.state.first_name}
-                      onChange={this.onChangePersonName}
+                      onChange={this.onChangeFirstName}
                       />
                 </div>
                 <div className="form-group">
@@ -104,17 +104,17 @@ export default class Create extends Component {
                     <input type="text" 
                       className="form-control"
                       value={this.state.last_name}
-                      onChange={this.onChangeBusinessName}
+                      onChange={this.onChangeLastName}
                       />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label>GST Number: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.business_gst_number}
                       onChange={this.onChangeGstNumber}
                       />
-                </div>
+                </div> */}
                 <div className="form-group">
                     <label>Qualification: </label>
                       <input list="browsers" name="browser" className="form-control"

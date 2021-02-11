@@ -46,7 +46,7 @@ businessRoutes.route('/update/:id').post(function (req, res) {
     else {
         business.first_name = req.body.first_name;
         business.last_name = req.body.last_name;
-        business.business_gst_number = req.body.business_gst_number;
+      /*   business.business_gst_number = req.body.business_gst_number; */
         business.person_qualification= req.body.person_qualification;
         business.date_of_birth= req.body.date_of_birth;
         business.marital_status= req.body.marital_status;
