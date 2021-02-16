@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define collection and schema for Business
-let Business = new Schema({
+// Define collection and schema for Person
+let Person = new Schema({
   first_name: {
     type: String
   },
@@ -26,4 +26,4 @@ let Business = new Schema({
     collection: 'person'
 });
 
-module.exports = mongoose.model('Business', Business);
+module.exports = mongoose.model('Person', Person);

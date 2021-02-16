@@ -1,14 +1,14 @@
 // person.route.js
 
 const express = require('express');
-const businessRoutes = express.Router();
+const personRoutes = express.Router();
 
-// Require Business model in our routes module
-let Business = require('./person.model');
+// Require Person model in our routes module
+let Person = require('./person.model');
 
 // Defined store route
-businessRoutes.route('/add').post(function (req, res) {
-  let person = new Business(req.body);
+personRoutes.route('/add').post(function (req, res) {
+  let person = new Person(req.body);
   person.save()
     .then(person => {
       res.status(200).json({'person': 'person in added successfully'});
@@ -19,8 +19,8 @@ businessRoutes.route('/add').post(function (req, res) {
 });
 
 // Defined get data(index or listing) route
-businessRoutes.route('/').get(function (req, res) {
-    Business.find(function(err, businesses){
+personRoutes.route('/').get(function (req, res) {
+    Person.find(function(err, businesses){
     if(err){
       console.log(err);
     }
@@ -31,16 +31,16 @@ businessRoutes.route('/').get(function (req, res) {
 });
 
 // Defined edit route
-businessRoutes.route('/edit/:id').get(function (req, res) {
+personRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  Business.findById(id, function (err, person){
+  Person.findById(id, function (err, person){
       res.json(person);
   });
 });
 
 //  Defined update route
-businessRoutes.route('/update/:id').post(function (req, res) {
-    Business.findById(req.params.id, function(err, person) {
+personRoutes.route('/update/:id').post(function (req, res) {
+    Person.findById(req.params.id, function(err, person) {
     if (!person)
       res.status(404).send("data is not found");
     else {
@@ -62,11 +62,11 @@ businessRoutes.route('/update/:id').post(function (req, res) {
 });
 
 // Defined delete | remove | destroy route
-businessRoutes.route('/delete/:id').get(function (req, res) {
-    Business.findByIdAndRemove({_id: req.params.id}, function(err, person){
+personRoutes.route('/delete/:id').get(function (req, res) {
+    Person.findByIdAndRemove({_id: req.params.id}, function(err, person){
         if(err) res.json(err);
         else res.json('Successfully removed');
     });
 });
 
-module.exports = businessRoutes;
+module.exports = personRoutes;
